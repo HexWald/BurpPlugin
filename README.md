@@ -2,8 +2,6 @@
 
 <img width="1536" height="1024" alt="изображение" src="https://github.com/user-attachments/assets/1899e530-bd07-42f5-bd9d-fb5c5f6a39c9" />
 
-Simple Minecraft plugin that lets players burp using a command.
-
 ## Features
 
 * Plays the Minecraft burp sound 🤢
