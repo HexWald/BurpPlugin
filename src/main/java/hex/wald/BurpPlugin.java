@@ -60,14 +60,26 @@ public class BurpPlugin extends JavaPlugin {
                     && p.getLocation().distance(player.getLocation()) <= radius) {
 
                 p.playSound(player.getLocation(), Sound.ENTITY_PLAYER_BURP, volume, pitch);
-                heard++;
+
+                if (p.equals(player)){
+                    heard++;
+                }
             }
         }
 
-        String chatMsg = getConfig().getString("messages.burp")
-                .replace("%player%", player.getName());
+        String chatMsg = color(getConfig().getString("messages.burp")
+                .replace("%player%", player.getName()));
 
-        Bukkit.broadcastMessage(color(chatMsg));
+        for (Player p : Bukkit.getOnlinePlayers()) {
+
+            if (p.equals(player)) continue;
+
+            if (p.getWorld().equals(player.getWorld())
+                    && p.getLocation().distance(player.getLocation()) <= radius) {
+
+                p.sendMessage(chatMsg);
+            }
+        }
 
         String heardMsg = getConfig().getString("messages.heard")
                 .replace("%count%", String.valueOf(heard));
