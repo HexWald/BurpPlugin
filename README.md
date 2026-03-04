@@ -1,4 +1,4 @@
-# Burp Plugin
+# Burp Plugin💨 
 
 <img width="1536" height="1024" alt="изображение" src="https://github.com/user-attachments/assets/1899e530-bd07-42f5-bd9d-fb5c5f6a39c9" />
 
@@ -14,7 +14,7 @@
 
 `/burp`
 
-Makes your player burp. That's it 😄
+Makes your player burp. That's it.
 
 ## Config
 
