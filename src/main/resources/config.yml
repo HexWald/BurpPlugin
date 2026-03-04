@@ -1,0 +1,15 @@
+# Area of suond burp
+radius: 10
+
+# Sound settings
+sound:
+  volume: 1.0
+  pitch: 1.0
+
+# Cooldown after using command
+cooldown: 5
+
+messages:
+  burp: "&6%player% громко рыгнул!"
+  heard: "&eИгроков услышало: &6%count%"
+  cooldown: "&cПодожди %time% сек перед следующим рыгом!"
