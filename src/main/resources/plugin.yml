@@ -1,0 +1,9 @@
+name: BurpPlugin
+version: 1.0
+main: hex.wald.BurpPlugin
+api-version: 1.21
+
+commands:
+  burp:
+    description: Burp
+    usage: /burp
