@@ -38,7 +38,7 @@ messages:
 
 ## Installation
 
-1. Download the plugin `.jar`
+1. Download the plugin `.jar` in releases
 2. Put it into your server `plugins` folder
 3. Start or restart the server
 
