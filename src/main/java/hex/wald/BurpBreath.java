@@ -7,7 +7,6 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
-import org.bukkit.util.Vector;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +15,8 @@ import java.util.UUID;
 
 final class BurpBreath {
 
+    private static final Particle.DustTransition WHITE = new Particle.DustTransition(
+            Color.fromRGB(210, 222, 229), Color.fromRGB(244, 247, 250), 0.9f);
     private static final Particle.DustTransition GREEN = new Particle.DustTransition(
             Color.fromRGB(105, 189, 112), Color.fromRGB(220, 241, 223), 0.9f);
 
@@ -29,6 +30,7 @@ final class BurpBreath {
     void show(Player player, List<Player> listeners, double radiusSquared, boolean green) {
         stop(player);
         World world = player.getWorld();
+        Particle.DustTransition color = green ? GREEN : WHITE;
 
         BukkitTask task = new BukkitRunnable() {
             private int puffs = 4;
@@ -42,8 +44,7 @@ final class BurpBreath {
 
                 Location origin = player.getLocation();
                 Location mouth = player.getEyeLocation();
-                Vector direction = mouth.getDirection();
-                mouth.add(direction.clone().multiply(0.4)).subtract(0, 0.2, 0);
+                mouth.add(mouth.getDirection().multiply(0.4)).subtract(0, 0.2, 0);
 
                 for (Player listener : listeners) {
                     if (!listener.isOnline() || !listener.getWorld().equals(world) || !plugin.canReceiveBurp(listener, player)
@@ -51,13 +52,8 @@ final class BurpBreath {
                         continue;
                     }
 
-                    // A zero count sends one cloud particle in the look direction.
-                    listener.spawnParticle(Particle.CLOUD, mouth, 0,
-                            direction.getX(), direction.getY(), direction.getZ(), 0.055);
-                    if (green) {
-                        listener.spawnParticle(Particle.DUST_COLOR_TRANSITION, mouth, 3,
-                                0.07, 0.04, 0.07, 0, GREEN);
-                    }
+                    listener.spawnParticle(Particle.DUST_COLOR_TRANSITION, mouth, 3,
+                            0.07, 0.04, 0.07, 0, color);
                 }
 
                 if (--puffs == 0) {
