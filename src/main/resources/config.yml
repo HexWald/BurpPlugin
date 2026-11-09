@@ -1,15 +1,35 @@
-# Area of suond burp
+# Default radius in blocks for sound, chat and breath.
 radius: 10
 
-# Sound settings
 sound:
+  # Uncomment to set a separate sound radius.
+  # radius: 10
   volume: 1.0
   pitch: 1.0
+  deep-pitch: 0.65
+  # Random amount added to or subtracted from the regular pitch.
+  pitch-variation: 0.05
 
-# Cooldown after using command
+quiet:
+  # Multipliers for the usual volume and each radius, from 0 to 1.
+  volume-multiplier: 0.35
+  radius-multiplier: 0.5
+
+# Cooldown in seconds
 cooldown: 5
 
+breath:
+  # Uncomment to set a separate particle radius.
+  # radius: 10
+  enabled: true
+  green: false
+
 messages:
+  # Uncomment to set a separate radius for the burp message.
+  # radius: 10
   burp: "&6%player% громко рыгнул!"
+  quiet: "&6%player% тихо рыгнул."
   heard: "&eИгроков услышало: &6%count%"
   cooldown: "&cПодожди %time% сек перед следующим рыгом!"
+  muted: "&7Чужие рыги скрыты."
+  unmuted: "&7Чужие рыги снова включены."

@@ -1,9 +1,17 @@
 name: BurpPlugin
-version: 1.0
+version: '1.1'
 main: hex.wald.BurpPlugin
-api-version: 1.21
+api-version: '1.21'
 
 commands:
   burp:
     description: Burp
-    usage: /burp
+    usage: /burp [quiet|deep|mute|bind|reload]
+
+permissions:
+  burp.use:
+    description: Use the burp command and binds
+    default: true
+  burp.reload:
+    description: Reload BurpPlugin settings
+    default: op

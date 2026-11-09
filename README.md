@@ -1,52 +1,27 @@
-# Burp Plugin💨 
+# BurpPlugin
 
-<img width="1536" height="1024" alt="изображение" src="https://github.com/user-attachments/assets/1899e530-bd07-42f5-bd9d-fb5c5f6a39c9" />
+`/burp` plays a burp with a little breath cloud. Nearby players get the sound and a chat message.
 
-## Features
+`/burp quiet` uses a lower volume and smaller radii. `/burp deep` plays a lower note. `/burp mute` toggles the sound, chat and cloud from other players for you. The mute setting is saved between sessions.
 
-* Plays the Minecraft burp sound 🤢
-* Only players in a configurable radius hear it 🔊
-* Chat message when someone burps 💬
-* Cooldown to prevent spam ⏳
-* Fully configurable ⚙️
+## Install
 
-## Command
+Use Java 21 and a Minecraft 1.21 server with the Bukkit API. Build with `mvn clean package`, then put `target/burp-plugin-1.1.jar` in `plugins` and restart the server.
 
-`/burp`
+## Binds
 
-Makes your player burp. That's it.
+| Command | Gesture |
+| --- | --- |
+| `/burp bind double-sneak` | Tap sneak twice |
+| `/burp bind sneak-swap` | Use swap hands while sneaking |
+| `/burp bind off` | Turn the bind off |
 
-## Config
+Binds are off by default and saved per player. They follow your Minecraft controls. Add `quiet` after a gesture to use quiet mode, for example `/burp bind double-sneak quiet`. Set the gesture again by itself or add `normal` to switch back. `/burp bind` shows your current choice.
 
-You can change everything in the config file.
+## Settings
 
-Example:
+Edit `plugins/BurpPlugin/config.yml` and run `/burp reload` in game or `burp reload` in the console. The reload permission is `burp.reload` and defaults to operators. `burp.use` controls player commands and binds and is allowed by default.
 
-```
-cooldown: 10
-radius: 20
+`sound.radius`, `messages.radius` and `breath.radius` control who gets the sound, the chat message and the cloud. Uncomment the radius you want to change. Each one uses the top-level `radius` when omitted, which defaults to 10 blocks. For sound over longer distances, you may also need to increase `sound.volume` because Minecraft fades sound with distance.
 
-sound:
-  volume: 1.0
-  pitch: 1.0
-
-messages:
-  burp: "&e%player% just burped!"
-  heard: "&7Players who heard it: %count%"
-  cooldown: "&cWait %time%s before burping again"
-```
-
-## Installation
-
-1. Download the plugin `.jar` in releases
-2. Put it into your server `plugins` folder
-3. Start or restart the server
-
-## Requirements
-
-* Spigot / Paper
-* Java 17+
-
-## Why I made this
-
-Just a small fun plugin I made for practice and learning Bukkit plugin development.
+Set `quiet.volume-multiplier` and `quiet.radius-multiplier` to a value from 0 to 1. By default, quiet mode uses 35% of the volume setting and half of each radius. `sound.deep-pitch` sets the deep note. Set `sound.pitch-variation` to 0 to keep the regular note fixed. All modes share the same cooldown, which defaults to 5 seconds. Set `breath.green` to `true` for a green tint or `breath.enabled` to `false` to turn the cloud off.
