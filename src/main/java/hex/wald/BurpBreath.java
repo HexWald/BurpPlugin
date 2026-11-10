@@ -27,7 +27,7 @@ final class BurpBreath {
         this.plugin = plugin;
     }
 
-    void show(Player player, List<Player> listeners, double radiusSquared, boolean green) {
+    void show(Player player, List<Player> listeners, double radiusSquared, int particles, boolean green) {
         stop(player);
         World world = player.getWorld();
         Particle.DustTransition color = green ? GREEN : WHITE;
@@ -52,7 +52,7 @@ final class BurpBreath {
                         continue;
                     }
 
-                    listener.spawnParticle(Particle.DUST_COLOR_TRANSITION, mouth, 3,
+                    listener.spawnParticle(Particle.DUST_COLOR_TRANSITION, mouth, particles,
                             0.07, 0.04, 0.07, 0, color);
                 }
 

@@ -43,7 +43,13 @@ public class BurpPlugin extends JavaPlugin implements Listener {
     private static final long DOUBLE_SNEAK_WINDOW = TimeUnit.MILLISECONDS.toNanos(350);
 
     private enum BurpMode {
-        NORMAL, QUIET, DEEP
+        NORMAL(3), QUIET(1), DEEP(6);
+
+        private final int particles;
+
+        BurpMode(int particles) {
+            this.particles = particles;
+        }
     }
 
     private final Map<UUID, Long> cooldowns = new HashMap<>();
@@ -297,7 +303,7 @@ public class BurpPlugin extends JavaPlugin implements Listener {
 
         player.sendMessage(message("heard").replace("%count%", Integer.toString(heard)));
         if (!viewers.isEmpty()) {
-            breath.show(player, viewers, breathRange, settings.getBoolean("breath.green"));
+            breath.show(player, viewers, breathRange, mode.particles, settings.getBoolean("breath.green"));
         }
     }
 
