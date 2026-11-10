@@ -4,6 +4,8 @@
 
 `/burp quiet` uses a lower volume and smaller radii. `/burp deep` plays a lower note. `/burp mute` toggles the sound, chat and cloud from other players for you. The mute setting is saved between sessions.
 
+Quiet burps leave a smaller cloud. Deep burps leave a thicker one.
+
 ## Install
 
 Use Java 21 and a Minecraft 1.21 server with the Bukkit API. Build with `mvn clean package`, then put `target/burp-plugin-1.1.jar` in `plugins` and restart the server.
