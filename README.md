@@ -8,7 +8,7 @@ Quiet burps leave a smaller cloud. Deep burps leave a thicker one.
 
 ## Install
 
-Use Java 21 and a Minecraft 1.21 server with the Bukkit API. Build with `mvn clean package`, then put `target/burp-plugin-1.1.jar` in `plugins` and restart the server.
+Use JDK 25 and Maven to build. Put `target/burp-plugin-1.1.1.jar` in `plugins` and restart the server. The plugin builds against Paper 26.3.
 
 ## Binds
 
